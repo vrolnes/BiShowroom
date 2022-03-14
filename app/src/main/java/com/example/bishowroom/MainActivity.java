@@ -19,6 +19,7 @@ import com.google.ar.core.Plane;
 import com.google.ar.core.Session;
 import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.ArSceneView;
+import com.google.ar.sceneform.HitTestResult;
 import com.google.ar.sceneform.Node;
 import com.google.ar.sceneform.SceneView;
 import com.google.ar.sceneform.Sceneform;
@@ -136,18 +137,24 @@ public class MainActivity extends AppCompatActivity implements
         anchorNode.setParent(arFragment.getArSceneView().getScene());
 
         // Create the transformable model and add it to the anchor.
-        Node model = new Node();
-        model.setParent(anchorNode);
-        RenderableInstance renderableInstance = model.setRenderable(this.model);
+        Node renderObject = new Node();
+        renderObject.setParent(anchorNode);
+        RenderableInstance renderableInstance = renderObject.setRenderable(this.model);
         Box boundingBox = renderableInstance.getFilamentAsset().getBoundingBox();
         if (boundingBox != null) {
             Vector3 scale = new Vector3(1f,1f,1f);
-            model.setLocalScale(scale);
+            renderObject.setLocalScale(scale);
         }
-        model.setEnabled(true);
+        renderObject.setOnTapListener(new Node.OnTapListener() {
+            @Override
+            public void onTap(HitTestResult hitTestResult, MotionEvent motionEvent) {
+                renderObject.setEnabled(false);
+            }
+        });
+        renderObject.setEnabled(true);
 
         Node titleNode = new Node();
-        titleNode.setParent(model);
+        titleNode.setParent(renderObject);
         titleNode.setEnabled(false);
         titleNode.setLocalPosition(new Vector3(0.0f, 1.0f, 0.0f));
         titleNode.setRenderable(viewRenderable);
