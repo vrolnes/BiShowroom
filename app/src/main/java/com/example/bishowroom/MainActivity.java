@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements
     public void loadModels() {
         WeakReference<MainActivity> weakActivity = new WeakReference<>(this);
         ModelRenderable.builder()
-                .setSource(this, Uri.parse("https://storage.googleapis.com/ar-answers-in-search-models/static/Tiger/model.glb"))
+                .setSource(this, Uri.parse("https://github.com/KhronosGroup/glTF-Sample-Models/blob/master/2.0/SheenChair/glTF-Binary/SheenChair.glb?raw=true"))
                 .setIsFilamentGltf(true)
                 .setAsyncLoadEnabled(true)
                 .build()
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements
         RenderableInstance renderableInstance = model.setRenderable(this.model);
         Box boundingBox = renderableInstance.getFilamentAsset().getBoundingBox();
         if (boundingBox != null) {
-            Vector3 scale = new Vector3(0.1f,0.1f,0.1f);
+            Vector3 scale = new Vector3(1f,1f,1f);
             model.setLocalScale(scale);
         }
         model.setEnabled(true);
