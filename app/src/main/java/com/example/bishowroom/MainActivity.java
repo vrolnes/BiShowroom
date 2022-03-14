@@ -34,7 +34,6 @@ import com.google.ar.sceneform.rendering.RenderableInstance;
 import com.google.ar.sceneform.rendering.ViewRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.BaseArFragment;
-import com.google.ar.sceneform.ux.TransformableNode;
 
 import java.lang.ref.WeakReference;
 
@@ -113,11 +112,9 @@ public class MainActivity extends AppCompatActivity implements
                     return null;
                 });
         //Set title text
-        //FIXME title text not changing
-        //FIXME BiShowroom comes up before camera opens
         View titleView = getLayoutInflater().inflate(R.layout.view_model_title, null);
-        //TextView textTitle = findViewById(R.id.modelTitle);
-        //textTitle.setText(titleText);
+        TextView textTitle = titleView.findViewById(R.id.modelTitle);
+        textTitle.setText(titleText);
         //Set title
         ViewRenderable.builder()
                 .setView(this, titleView)

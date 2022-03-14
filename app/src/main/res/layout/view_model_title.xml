@@ -7,5 +7,5 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="6dp"
-    android:text="Chair"
+    android:text="Tiger"
     android:textAlignment="center" />
