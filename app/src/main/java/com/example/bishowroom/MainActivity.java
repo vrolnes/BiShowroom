@@ -3,6 +3,8 @@ package com.example.bishowroom;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,6 +23,7 @@ import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.ArSceneView;
 import com.google.ar.sceneform.HitTestResult;
 import com.google.ar.sceneform.Node;
+import com.google.ar.sceneform.NodeParent;
 import com.google.ar.sceneform.SceneView;
 import com.google.ar.sceneform.Sceneform;
 import com.google.ar.sceneform.math.Vector3;
@@ -60,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements
             }
         }
 
-        loadModels();
+        loadModels("https://github.com/KhronosGroup/glTF-Sample-Models/blob/master/2.0/SheenChair/glTF-Binary/SheenChair.glb?raw=true","Chair");
     }
 
     @Override
@@ -91,10 +94,10 @@ public class MainActivity extends AppCompatActivity implements
                 .setDepthOcclusionMode(CameraStream.DepthOcclusionMode.DEPTH_OCCLUSION_ENABLED);
     }
 
-    public void loadModels() {
+    public void loadModels(String modelUrl, String titleText) {
         WeakReference<MainActivity> weakActivity = new WeakReference<>(this);
         ModelRenderable.builder()
-                .setSource(this, Uri.parse("https://github.com/KhronosGroup/glTF-Sample-Models/blob/master/2.0/SheenChair/glTF-Binary/SheenChair.glb?raw=true"))
+                .setSource(this, Uri.parse(modelUrl))
                 .setIsFilamentGltf(true)
                 .setAsyncLoadEnabled(true)
                 .build()
@@ -106,11 +109,18 @@ public class MainActivity extends AppCompatActivity implements
                 })
                 .exceptionally(throwable -> {
                     Toast.makeText(
-                            this, "Unable to load model", Toast.LENGTH_LONG).show();
+                            this, R.string.load_model_fail_message, Toast.LENGTH_LONG).show();
                     return null;
                 });
+        //Set title text
+        //FIXME title text not changing
+        //FIXME BiShowroom comes up before camera opens
+        View titleView = getLayoutInflater().inflate(R.layout.view_model_title, null);
+        //TextView textTitle = findViewById(R.id.modelTitle);
+        //textTitle.setText(titleText);
+        //Set title
         ViewRenderable.builder()
-                .setView(this, R.layout.view_model_title)
+                .setView(this, titleView)
                 .build()
                 .thenAccept(viewRenderable -> {
                     MainActivity activity = weakActivity.get();
@@ -119,7 +129,8 @@ public class MainActivity extends AppCompatActivity implements
                     }
                 })
                 .exceptionally(throwable -> {
-                    Toast.makeText(this, "Unable to load model", Toast.LENGTH_LONG).show();
+                    Toast.makeText(
+                            this, R.string.load_model_fail_message, Toast.LENGTH_LONG).show();
                     return null;
                 });
     }
@@ -127,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onTapPlane(HitResult hitResult, Plane plane, MotionEvent motionEvent) {
         if (model == null || viewRenderable == null) {
-            Toast.makeText(this, "Loading...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.loading_message, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -139,22 +150,32 @@ public class MainActivity extends AppCompatActivity implements
         // Create the transformable model and add it to the anchor.
         Node renderObject = new Node();
         renderObject.setParent(anchorNode);
+
+        //fix scale
         RenderableInstance renderableInstance = renderObject.setRenderable(this.model);
         Box boundingBox = renderableInstance.getFilamentAsset().getBoundingBox();
         if (boundingBox != null) {
-            Vector3 scale = new Vector3(1f,1f,1f);
+            Vector3 scale = new Vector3(1f, 1f, 1f);
             renderObject.setLocalScale(scale);
         }
+
+        //tap listener for remove objects
         renderObject.setOnTapListener(new Node.OnTapListener() {
             @Override
             public void onTap(HitTestResult hitTestResult, MotionEvent motionEvent) {
                 renderObject.setEnabled(false);
             }
         });
+
         renderObject.setEnabled(true);
 
+        makeNodeTitle(renderObject);
+    }
+
+    private void makeNodeTitle(NodeParent nodeParent) {
+        //node title
         Node titleNode = new Node();
-        titleNode.setParent(renderObject);
+        titleNode.setParent(nodeParent);
         titleNode.setEnabled(false);
         titleNode.setLocalPosition(new Vector3(0.0f, 1.0f, 0.0f));
         titleNode.setRenderable(viewRenderable);

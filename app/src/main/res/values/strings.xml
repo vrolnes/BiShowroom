@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">BiShowroom</string>
+    <string name="app_name" translatable="false">BiShowroom</string>
+    <string name="load_model_fail_message">Unable to load model</string>
+    <string name="loading_message">Loading...</string>
 </resources>

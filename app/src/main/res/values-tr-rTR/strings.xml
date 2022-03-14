@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BiShowroom</string>
+    <string name="load_model_fail_message">Model yüklenemedi</string>
+    <string name="loading_message">Yükleniyor...</string>
+</resources>
