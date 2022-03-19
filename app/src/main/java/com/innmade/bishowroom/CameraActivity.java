@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentOnAttachListener;
 
-import com.example.bishowroom.R;
 import com.google.android.filament.Box;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.Config;
@@ -38,7 +37,7 @@ import com.google.ar.sceneform.ux.BaseArFragment;
 
 import java.lang.ref.WeakReference;
 
-public class MainActivity extends AppCompatActivity implements
+public class CameraActivity extends AppCompatActivity implements
         FragmentOnAttachListener,
         BaseArFragment.OnTapArPlaneListener,
         BaseArFragment.OnSessionConfigurationListener,
@@ -95,14 +94,14 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     public void loadModels(String modelUrl, String titleText) {
-        WeakReference<MainActivity> weakActivity = new WeakReference<>(this);
+        WeakReference<CameraActivity> weakActivity = new WeakReference<>(this);
         ModelRenderable.builder()
                 .setSource(this, Uri.parse(modelUrl))
                 .setIsFilamentGltf(true)
                 .setAsyncLoadEnabled(true)
                 .build()
                 .thenAccept(model -> {
-                    MainActivity activity = weakActivity.get();
+                    CameraActivity activity = weakActivity.get();
                     if (activity != null) {
                         activity.model = model;
                     }
@@ -121,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements
                 .setView(this, titleView)
                 .build()
                 .thenAccept(viewRenderable -> {
-                    MainActivity activity = weakActivity.get();
+                    CameraActivity activity = weakActivity.get();
                     if (activity != null) {
                         activity.viewRenderable = viewRenderable;
                     }
