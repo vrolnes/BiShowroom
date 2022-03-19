@@ -1,6 +1,5 @@
 package com.innmade.bishowroom.features.homepage;
 
-import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
@@ -28,11 +27,5 @@ public class HomeFragment extends Fragment {
         return inflater.inflate(R.layout.home_fragment, container, false);
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-        // TODO: Use the ViewModel
-    }
 
 }

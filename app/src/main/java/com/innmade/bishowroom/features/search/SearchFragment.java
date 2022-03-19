@@ -1,6 +1,5 @@
 package com.innmade.bishowroom.features.search;
 
-import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
@@ -28,11 +27,5 @@ public class SearchFragment extends Fragment {
         return inflater.inflate(R.layout.search_fragment, container, false);
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
-        // TODO: Use the ViewModel
-    }
 
 }

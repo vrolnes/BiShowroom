@@ -1,6 +1,5 @@
 package com.innmade.bishowroom.features.categories;
 
-import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
@@ -28,11 +27,5 @@ public class CategoriesFragment extends Fragment {
         return inflater.inflate(R.layout.categories_fragment, container, false);
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(CategoriesViewModel.class);
-        // TODO: Use the ViewModel
-    }
 
 }
