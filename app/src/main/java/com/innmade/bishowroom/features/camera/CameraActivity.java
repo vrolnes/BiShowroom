@@ -8,7 +8,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentOnAttachListener;
@@ -35,10 +34,11 @@ import com.google.ar.sceneform.rendering.ViewRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.BaseArFragment;
 import com.innmade.bishowroom.R;
+import com.innmade.bishowroom.features.BaseActivity;
 
 import java.lang.ref.WeakReference;
 
-public class CameraActivity extends AppCompatActivity implements
+public class CameraActivity extends BaseActivity implements
         FragmentOnAttachListener,
         BaseArFragment.OnTapArPlaneListener,
         BaseArFragment.OnSessionConfigurationListener,

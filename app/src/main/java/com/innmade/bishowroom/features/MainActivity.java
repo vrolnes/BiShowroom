@@ -1,7 +1,6 @@
 package com.innmade.bishowroom.features;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -13,7 +12,7 @@ import com.innmade.bishowroom.features.categories.CategoriesFragment;
 import com.innmade.bishowroom.features.homepage.HomeFragment;
 import com.innmade.bishowroom.features.search.SearchFragment;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
 
     BottomNavigationView bottomNavigationView;
