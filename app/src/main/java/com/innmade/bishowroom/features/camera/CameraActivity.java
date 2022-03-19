@@ -1,4 +1,4 @@
-package com.innmade.bishowroom;
+package com.innmade.bishowroom.features.camera;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -34,6 +34,7 @@ import com.google.ar.sceneform.rendering.RenderableInstance;
 import com.google.ar.sceneform.rendering.ViewRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.BaseArFragment;
+import com.innmade.bishowroom.R;
 
 import java.lang.ref.WeakReference;
 
