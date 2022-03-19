@@ -1,4 +1,4 @@
-package com.example.bishowroom;
+package com.innmade.bishowroom;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentOnAttachListener;
 
+import com.example.bishowroom.R;
 import com.google.android.filament.Box;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.Config;

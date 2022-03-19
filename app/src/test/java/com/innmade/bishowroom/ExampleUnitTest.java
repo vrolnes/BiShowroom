@@ -1,4 +1,4 @@
-package com.example.bishowroom;
+package com.innmade.bishowroom;
 
 import org.junit.Test;
 

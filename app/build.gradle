@@ -6,7 +6,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.bishowroom"
+        applicationId "com.innmade.bishowroom"
         minSdk 26
         targetSdk 32
         versionCode 1
