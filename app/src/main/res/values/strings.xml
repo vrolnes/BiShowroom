@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name" translatable="false">BiShowroom</string>
     <string name="load_model_fail_message">Unable to load model</string>
-    <string name="loading_message">Loading...</string>
+    <string name="loading_message">Loading…</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="categories">Categories</string>
+    <string name="brands">Brands</string>
+    <string name="network_error">Network Lost!</string>
 </resources>

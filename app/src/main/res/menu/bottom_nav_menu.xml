@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/home"
-        android:title="Home"
+        android:title="@string/home"
         android:icon="@android:drawable/btn_star"/>
     <item
         android:id="@+id/search"
-        android:title="Search"
+        android:title="@string/search"
         android:icon="@android:drawable/arrow_up_float"/>
     <item
         android:id="@+id/categories"
-        android:title="Categories"
+        android:title="@string/categories"
         android:icon="@android:drawable/arrow_down_float"/>
     <item
         android:id="@+id/brands"
-        android:title="Brands"
+        android:title="@string/brands"
         android:icon="@android:drawable/btn_dialog"/>
 </menu>

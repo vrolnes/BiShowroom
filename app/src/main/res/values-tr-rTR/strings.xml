@@ -2,5 +2,10 @@
 <resources>
     <string name="app_name">BiShowroom</string>
     <string name="load_model_fail_message">Model yüklenemedi</string>
-    <string name="loading_message">Yükleniyor...</string>
+    <string name="loading_message">Yükleniyor…</string>
+    <string name="home">Ana Sayfa</string>
+    <string name="search">Ara</string>
+    <string name="categories">Kategoriler</string>
+    <string name="brands">Markalar</string>
+    <string name="network_error">Bağlantı Kayboldu!</string>
 </resources>

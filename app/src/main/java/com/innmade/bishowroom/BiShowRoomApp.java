@@ -1,15 +1,17 @@
 package com.innmade.bishowroom;
 
-import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.net.NetworkRequest;
-
+import javinator9889.localemanager.application.BaseApplication;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
-public class BiShowRoomApp extends Application {
+public class BiShowRoomApp extends BaseApplication {
 
     private static boolean activityVisible;
 
@@ -64,5 +66,15 @@ public class BiShowRoomApp extends Application {
 
     public static void activityPaused() {
         activityVisible = false;
+    }
+
+    @Override
+    @Nullable
+    protected SharedPreferences getCustomSharedPreferences(@NonNull Context base) {
+        // If you are planning to store the user language in a custom shared preferences, create
+        // and initialize them here.
+        // If not, you can safely return "null"
+        // OR
+        return null;
     }
 }
